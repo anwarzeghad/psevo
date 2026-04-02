@@ -58,9 +58,7 @@ const IncidentClassifier: React.FC = () => {
   const activeStep: Step | "FINAL" = result ? "FINAL" : currentQuestion?.step ?? "STEP_1";
 
   // Visible questions = answered + current active
-  const visibleQuestions = QUESTIONS.filter(
-    (q) => q.id in answers || QUESTIONS.indexOf(q) === activeIndex
-  );
+
 
   const answeredCount = Object.keys(answers).length;
   

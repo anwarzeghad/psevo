@@ -19,7 +19,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
   cardRef,
 }) => {
   const chosenYes = answered && answerLabel === "OUI";
-  const chosenNo  = answered && answerLabel === "NON";
+  
 
   const borderStyle = answered
     ? { borderColor: chosenYes ? "rgba(232,50,26,0.4)" : "rgba(59,111,212,0.3)" }

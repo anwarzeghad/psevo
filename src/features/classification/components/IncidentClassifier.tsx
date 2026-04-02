@@ -63,7 +63,7 @@ const IncidentClassifier: React.FC = () => {
   );
 
   const answeredCount = Object.keys(answers).length;
-  const totalVisible  = visibleQuestions.length;
+  
 
   // Progress: based on answered vs total possible (15 questions max)
   const progress = Math.round((answeredCount / QUESTIONS.length) * 100);

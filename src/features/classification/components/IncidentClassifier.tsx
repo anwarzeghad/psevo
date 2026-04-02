@@ -50,16 +50,15 @@ const IncidentClassifier: React.FC = () => {
   const [result, setResult]           = useState<Result | null>(null);
   const utcTime                       = useUtcClock();
 
-  const cardRefs = useRef<Record<number, React.RefObject<HTMLDivElement>>>(
-    Object.fromEntries(QUESTIONS.map((q) => [q.id, createRef<HTMLDivElement>()]))
+  const cardRefs = useRef<Record<number, React.RefObject<HTMLDivElement | null>>>(
+    QUESTIONS.reduce((acc, q) => {
+      acc[q.id] = createRef<HTMLDivElement>();
+      return acc;
+    }, {} as Record<number, React.RefObject<HTMLDivElement | null>>)
   );
 
   const currentQuestion = QUESTIONS[activeIndex];
   const activeStep: Step | "FINAL" = result ? "FINAL" : currentQuestion?.step ?? "STEP_1";
-
-  // Visible questions = answered + current active
-
-
   const answeredCount = Object.keys(answers).length;
   
 

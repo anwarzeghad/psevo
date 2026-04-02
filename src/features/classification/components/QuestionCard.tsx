@@ -7,7 +7,7 @@ interface QuestionCardProps {
   answered: boolean;
   answerLabel?: string;
   onAnswer: (nextId: number | string, label: string) => void;
-  cardRef?: React.RefObject<HTMLDivElement>;
+  cardRef?: React.RefObject<HTMLDivElement | null>;
 }
 
 const QuestionCard: React.FC<QuestionCardProps> = ({

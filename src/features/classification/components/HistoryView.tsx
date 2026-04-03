@@ -374,7 +374,7 @@ const HistoryView: React.FC = () => {
               </div>
 
               {/* Rows */}
-              {filtered.map((report, idx) => {
+              {filtered.map((report) => {
                 const cfg = RESULT_CONFIG[report.verdict.result];
                 return (
                   <div

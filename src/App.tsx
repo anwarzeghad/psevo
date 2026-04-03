@@ -7,8 +7,8 @@ import Navbar from "./features/classification/components/Navbar";
 import type { View } from "./features/classification/components/Navbar";
 import IncidentClassifier from "./features/classification/components/IncidentClassifier";
 import HistoryView from "./features/classification/components/HistoryView";
-import DashboardView from "./features/classification/components/DashboardView";
-import StandardsView from "./features/classification/components/StandardsView";
+import DashboardView from "./features/classification/components/Dashboardview";
+import StandardsView from "./features/classification/components/Standardsview";
 
 const App: React.FC = () => {
   const [view, setView] = useState<View>("dashboard");
@@ -42,8 +42,7 @@ const App: React.FC = () => {
 
         <div className="flex-1 overflow-hidden">
           {view === "dashboard"  && <DashboardView />}
-          {view === "classifier" && <IncidentClassifier />}
-          {view === "incidents"  && <HistoryView />} {/* Placeholder for IncidentsView */}
+          {(view === "incidents" || view === "classifier") && <IncidentClassifier />}
           {view === "history"    && <HistoryView />}
           {view === "standards"  && <StandardsView />}
         </div>

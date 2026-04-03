@@ -5,9 +5,9 @@
 import React, { useMemo } from "react";
 import {
   LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer,
-  PieChart, Pie, Cell, Legend,
+  PieChart, Pie, Cell,
 } from "recharts";
-import { Shield, AlertTriangle, TrendingDown, Activity, Wind } from "lucide-react";
+import { Shield, TrendingDown, Activity, Wind } from "lucide-react";
 import { getReports } from "../services/storage";
 import type { Report } from "../types/Report";
 
@@ -222,7 +222,7 @@ const PlantHeatmap: React.FC = () => (
         </div>
       ))}
     </div>
-    {/* Legend */}
+    
     <div className="flex gap-3 mt-3 flex-wrap">
       {[
         { label: "None",     bg: "#F8FAFC", border: "#E2E8F0" },
@@ -369,7 +369,7 @@ const DashboardView: React.FC = () => {
                       background: "white", border: "1px solid #E2E8F0",
                       borderRadius: 4, fontSize: 11, fontFamily: "Barlow",
                     }}
-                    formatter={(v: number) => [`${v}%`, ""]}
+                    formatter={(v) => [(v !== undefined ? `${v}%` : "N/A"), ""]}
                   />
                 </PieChart>
               </ResponsiveContainer>

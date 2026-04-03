@@ -11,12 +11,7 @@ interface StepItemProps {
 }
 
 const StepItem: React.FC<StepItemProps> = ({
-  icon,
-  label,
-  active,
-  done,
-  questionCount,
-  answeredCount,
+  icon, label, active, done, questionCount, answeredCount,
 }) => (
   <div
     className={[

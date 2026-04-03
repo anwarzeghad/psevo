@@ -2,3 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+@media print {
+  /* On force le body à redevenir un document normal */
+  body {
+    overflow: visible !important;
+    height: auto !important;
+    background: white !important;
+  }
+
+  /* On cache TOUT sauf ce qui est dans PrintableReport */
+  #root > div:not(#printable-area) {
+     /* Si PrintableReport est à l'intérieur d'un arbre complexe, 
+        il vaut mieux cacher les frères du conteneur principal */
+  }
+
+  /* Cache la sidebar et le dashboard */
+  aside, nav, .no-print {
+    display: none !important;
+  }
+
+  /* Supprime les marges forcées par le navigateur */
+  @page {
+    margin: 1cm;
+  }
+}

@@ -4,6 +4,8 @@ import logo from "../../../assets/logo/logo.png";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
+export type View = "dashboard" | "incidents" | "classifier" | "history" | "standards";
+
 type NavLinkProps = {
   label: string;
   active?: boolean;
@@ -21,10 +23,7 @@ type IconButtonProps = {
 const NavLink = ({ label, active = false, onClick }: NavLinkProps) => (
   <a
     href="#"
-    onClick={(e) => {
-      e.preventDefault();
-      onClick?.();
-    }}
+    onClick={(e) => { e.preventDefault(); onClick?.(); }}
     aria-current={active ? "page" : undefined}
     className={[
       "relative px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.18em]",
@@ -52,24 +51,36 @@ const IconButton = ({ children, label, hasBadge = false }: IconButtonProps) => (
 
 // ─── Navbar ───────────────────────────────────────────────────────────────────
 
-const Navbar = () => {
+interface NavbarProps {
+  activeView: View;
+  onNavigate: (view: View) => void;
+}
+
+const Navbar = ({ activeView, onNavigate }: NavbarProps) => {
   const [searchFocused, setSearchFocused] = useState(false);
-  const [activeLink, setActiveLink] = useState("Incidents");
+
+  const NAV_ITEMS: { key: View; label: string }[] = [
+    { key: "dashboard",  label: "Dashboard"  },
+    { key: "incidents",  label: "Incidents"  },
+    { key: "classifier", label: "Classifier" },
+    { key: "history",    label: "History"    },
+    { key: "standards",  label: "Standards"  },
+  ];
 
   return (
     <nav
-      className="h-14 sticky top-0 z-50 flex items-center gap-0 px-6 bg-white border-b border-[#E2E8F0] shadow-[0_1px_8px_rgba(15,25,35,0.06)]"
+      className="h-14 sticky top-0 z-50 flex items-center gap-0 px-6 bg-white border-b border-[#E2E8F0] shadow-[0_1px_8px_rgba(15,25,35,0.06)] print:hidden"
       style={{ fontFamily: "'Barlow', sans-serif" }}
     >
-      {/* ── LOGO ────────────────────────────────────────────────────────── */}
-        <div className="flex items-center gap-2.5 cursor-pointer mr-6 flex-shrink-0 group">
-            <img src={logo} alt="Psevo logo" className="h-8" />
-        </div>
+      {/* LOGO */}
+      <div className="flex items-center gap-2.5 cursor-pointer mr-6 flex-shrink-0 group">
+        <img src={logo} alt="Psevo logo" className="h-8" />
+      </div>
 
-      {/* ── DIVIDER ─────────────────────────────────────────────────────── */}
+      {/* DIVIDER */}
       <div className="w-px h-7 bg-[#E2E8F0] mx-5 flex-shrink-0" />
 
-      {/* ── SITE BADGE ──────────────────────────────────────────────────── */}
+      {/* SITE BADGE */}
       <div className="hidden sm:flex items-center gap-2 px-2.5 py-[5px] bg-[#F8FAFC] border border-[#E2E8F0] rounded-sm flex-shrink-0 mr-7">
         <span className="w-1.5 h-1.5 rounded-full bg-[#22C55E] shadow-[0_0_6px_rgba(34,197,94,0.6)] animate-pulse flex-shrink-0" />
         <div>
@@ -85,15 +96,19 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* ── NAV LINKS ───────────────────────────────────────────────────── */}
+      {/* NAV LINKS */}
       <div className="hidden md:flex items-center gap-1">
-        <NavLink label="Dashboard" active={activeLink === "Dashboard"} onClick={() => setActiveLink("Dashboard")} />
-        <NavLink label="Incidents" active={activeLink === "Incidents"} onClick={() => setActiveLink("Incidents")} />
-        <NavLink label="Classifier" active={activeLink === "Classifier"} onClick={() => setActiveLink("Classifier")} />
-        <NavLink label="Standards" active={activeLink === "Standards"} onClick={() => setActiveLink("Standards")} />
+        {NAV_ITEMS.map(({ key, label }) => (
+          <NavLink
+            key={key}
+            label={label}
+            active={activeView === key}
+            onClick={() => onNavigate(key)}
+          />
+        ))}
       </div>
 
-      {/* ── RIGHT ───────────────────────────────────────────────────────── */}
+      {/* RIGHT */}
       <div className="ml-auto flex items-center gap-2">
 
         {/* Search */}
@@ -115,14 +130,11 @@ const Navbar = () => {
               "bg-[#F8FAFC] border rounded-sm py-[6px] pl-8 pr-3",
               "font-mono text-[9px] font-medium uppercase tracking-[0.12em] text-[#334155]",
               "outline-none transition-all duration-200 placeholder:text-[#CBD5E1]",
-              searchFocused
-                ? "border-[#3B6FD4] w-48"
-                : "border-[#E2E8F0] w-36",
+              searchFocused ? "border-[#3B6FD4] w-48" : "border-[#E2E8F0] w-36",
             ].join(" ")}
           />
         </div>
 
-        {/* Icon buttons */}
         <IconButton label="Notifications" hasBadge>
           <Bell size={15} />
         </IconButton>
@@ -131,7 +143,6 @@ const Navbar = () => {
           <Settings size={15} />
         </IconButton>
 
-        {/* Divider */}
         <div className="w-px h-7 bg-[#E2E8F0] mx-1 flex-shrink-0" />
 
         {/* Profile */}

@@ -3,12 +3,12 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import React, { useState } from "react";
-import Navbar from "./features/classification/components/Navbar";
-import type { View } from "./features/classification/components/Navbar";
+import Navbar from "./features/navbar/components/Navbar";
+import type { View } from "./features/navbar/components/Navbar";
 import IncidentClassifier from "./features/classification/components/IncidentClassifier";
-import HistoryView from "./features/classification/components/HistoryView";
-import DashboardView from "./features/classification/components/Dashboardview";
-import StandardsView from "./features/classification/components/Standardsview";
+import HistoryView from "./features/history/components/HistoryView";
+import DashboardView from "./features/dashboard/components/Dashboardview";
+import StandardsView from "./features/standards/components/Standardsview";
 
 const App: React.FC = () => {
   const [view, setView] = useState<View>("dashboard");

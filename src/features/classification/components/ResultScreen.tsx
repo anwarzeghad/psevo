@@ -6,8 +6,8 @@
 import React from "react";
 import { Shield, AlertTriangle, XCircle, Search, Download, Printer } from "lucide-react";
 import type { Result } from "../data/Questions";
-import type { Report } from "../types/Report";
-import { exportReportAsJSON } from "../services/storage";
+import type { Report } from "../../types/Report";
+import { exportReportAsJSON } from "../../services/storage";
 
 interface ResultScreenProps {
   result: Result;

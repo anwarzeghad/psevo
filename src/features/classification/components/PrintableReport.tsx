@@ -1,5 +1,5 @@
 import React from "react";
-import type { Report } from "../types/Report";
+import type { Report } from "../../types/Report";
 
 interface PrintableReportProps {
   report: Report;

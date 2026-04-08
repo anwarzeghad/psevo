@@ -17,9 +17,9 @@ import {
   XCircle,
   Search as SearchIcon,
 } from "lucide-react";
-import type { Report } from "../types/Report";
-import type { Result } from "../data/Questions";
-import { getReports, deleteReport, exportReportAsJSON } from "../services/storage";
+import type { Report } from "../../types/Report";
+import type { Result } from "../../classification/data/Questions";
+import { getReports, deleteReport, exportReportAsJSON } from "../../services/storage";
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 

@@ -8,8 +8,8 @@ import {
   PieChart, Pie, Cell,
 } from "recharts";
 import { Shield, TrendingDown, Activity, Wind } from "lucide-react";
-import { getReports } from "../services/storage";
-import type { Report } from "../types/Report";
+import { getReports } from "../../services/storage";
+import type { Report } from "../../types/Report";
 
 // ─── Data helpers ─────────────────────────────────────────────────────────────
 

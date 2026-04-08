@@ -2,7 +2,7 @@
 // services/storage.ts — LocalStorage service
 // ─────────────────────────────────────────────────────────────────────────────
 
-import type { Report, SessionDraft } from "../types/Report";
+import type { Report, SessionDraft } from "../classification/types/Report";
 
 const REPORTS_KEY  = "psevo_reports";
 const DRAFT_KEY    = "psevo_session_draft";

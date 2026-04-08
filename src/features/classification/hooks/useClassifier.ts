@@ -5,14 +5,14 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { QUESTIONS } from "../data/Questions";
 import type { Result } from "../data/Questions";
-import type { Report, ReportAnswer, SessionDraft } from "../types/Report";
+import type { Report, ReportAnswer, SessionDraft } from "../../types/Report";
 import {
   generateUUID,
   saveReport,
   saveDraft,
   loadDraft,
   clearDraft,
-} from "../services/storage";
+} from "../../services/storage";
 
 const RESULT_LABELS: Record<Result, string> = {
   TIER_1:          "PSE Tier 1",

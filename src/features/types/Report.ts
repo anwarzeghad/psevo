@@ -2,7 +2,7 @@
 // types/Report.ts — Objet Rapport PSE
 // ─────────────────────────────────────────────────────────────────────────────
 
-import type { Result } from "../data/Questions";
+import type { Result } from "../classification/data/Questions";
 
 export interface ReportAnswer {
   questionId: number;

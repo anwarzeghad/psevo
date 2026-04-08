@@ -77,7 +77,7 @@ const ReportDetailModal: React.FC<{
   onClose: () => void;
   onExportJSON: (r: Report) => void;
 }> = ({ report, onClose, onExportJSON }) => {
-  const cfg = RESULT_CONFIG[report.verdict.result];
+  const cfg = RESULT_CONFIG[report.verdict.result as Result];
 
   // Print: masquer tout sauf #print-report
   const handlePrint = () => window.print();
@@ -375,7 +375,7 @@ const HistoryView: React.FC = () => {
 
               {/* Rows */}
               {filtered.map((report) => {
-                const cfg = RESULT_CONFIG[report.verdict.result];
+                const cfg = RESULT_CONFIG[report.verdict.result as Result];
                 return (
                   <div
                     key={report.id}
